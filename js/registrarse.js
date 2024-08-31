@@ -56,33 +56,33 @@ $(document).ready(function(){
        },
        messages:{
            usuario: {
-               required: "el usuario es requerido"
+               required: "El nombre de usuario es requerido"
            },
            rut:{
-               required: "el rut es requerido",
-               validacionRUT:"no tiene el formato de rut (sin puntos y sin espacios)"
+               required: "El rut es requerido",
+               validacionRUT:"No tiene el formato de rut (sin puntos y sin espacios)"
            },
            email:{
-               required: "el correo es requerido",
-               email: "el formato no es el correcto"
+               required: "El correo es requerido",
+               email: "Ingrese un correo válido"
            },
            contrasenya:{
-               required: "la contraseña es requerida",
-               pwcheck: "la contraseña no tiene un formato válido",
-               minlength: "debe contener 8 caracteres"
+               required: "La contraseña es requerida",
+               pwcheck: "La contraseña no tiene un formato válido",
+               minlength: "Debe contener 8 caracteres"
            }, 
            recontrasenya:{
-               required: "la confirmación de la contraseña es requerida",
-               equalTo: "no son identicas"
+               required: "La confirmación de la contraseña es requerida",
+               equalTo: "No son identicas"
            },
            region:{
-               required:"la región es requerida"
+               required:"La región es requerida"
            },
            comuna:{
-               required: "la comuna es requerida"
+               required: "La comuna es requerida"
            },
            terminos:{
-               required: "es requerido aceptar términos y condiciones"
+               required: "Es requerido aceptar términos y condiciones"
            }
        }
    });
