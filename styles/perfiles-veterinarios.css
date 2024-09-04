@@ -2,7 +2,7 @@ body {
     font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f9f9f9;
+    background-color: #0e4494;
     color: #333;
 }
 
@@ -16,7 +16,7 @@ body {
 /* Sección del equipo */
 .team-section {
     padding: 40px 20px;
-    background-color: #fff;
+    background-color: #225b;
 }
 
 .team-container {
@@ -28,7 +28,7 @@ body {
 
 /* Tarjeta del equipo */
 .team-card {
-    background-color: #fff;
+    background-color: #5553cf;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     overflow: hidden;
