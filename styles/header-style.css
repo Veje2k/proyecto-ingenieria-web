@@ -1,3 +1,36 @@
-.header{
-    background-color: rgb(25, 20, 85);
+header{
+    background-color: #c4762b;
+}
+.navbar .container-fluid { 
+    background-color: #c4762b;
+}
+
+.navbar .navbar-brand {
+    color: #fff; /* Ajusta el color del texto del logo si es necesario */
+}
+
+.navbar .nav-link {
+    color: #fff; /* Cambia el color de los enlaces dentro del navbar */
+}
+
+.navbar .btn-outline-success {
+    color: #fff;
+    border-color: #fff;
+}
+
+.navbar .btn-outline-success:hover {
+    color: #4CAF50;
+    background-color: #fff;
+    border-color: #fff;
+}
+
+.navbar .btn-primary {
+    background-color: #fff;
+    border-color: #fff;
+    color: #4CAF50;
+}
+
+.navbar .btn-primary:hover {
+    background-color: #4CAF50;
+    color: #fff;
 }
