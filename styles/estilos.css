@@ -32,6 +32,11 @@ h1 {
   color: #ffba00;
 }
 
+
+div {
+  color: white;
+}
+
 /* Estilos Header */
 
 .navbar {
