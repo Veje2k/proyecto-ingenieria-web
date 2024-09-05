@@ -16,7 +16,7 @@ El principal objetivo de la aplicación es ofrecer al usuario una herramienta en
 
 - - Creación de perfil: El usuario podrá registrarse en la aplicación y asi obtener un perfil, en donde se guardara su registro.
 
--- Inicio de sesión:
+- - Inicio de sesión:
 
 - - Registro de mascotas: El usuario podrá administrar sus mascotas según sus necesidades. Podra agregar nuevas mascotas que desee añadir a su rutina, y diariamente podrá registrar su avance. Tambien podra editar o eliminar mascotas según sus necesidades.
 
