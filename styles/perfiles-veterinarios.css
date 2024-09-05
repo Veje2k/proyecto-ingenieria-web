@@ -2,7 +2,7 @@ body {
     font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #0c3b2e;
+    background-color: #6d9773;
     color: #333;
 }
 
@@ -16,7 +16,7 @@ body {
 /* Sección del equipo */
 .team-section {
     padding: 40px 20px;
-    background-color: #0c3b2e;
+    background-color: #6d9773;
 }
 
 .team-container {
