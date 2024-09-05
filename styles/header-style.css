@@ -4,14 +4,7 @@ header{
     margin: 0;
     padding: 0;
 }
-
-.navbar .navbar-expand-lg .lg-body-tertiary{
-    background-color: #c4762b;
-    width: 100%;
-    margin: 0;
-    padding: 0;
-}
-
+ 
 .navbar {
     background-color: #4CAF50;  /* Color de fondo del navbar */
     width: 100%;                /* Asegurar que el navbar ocupe todo el ancho */
