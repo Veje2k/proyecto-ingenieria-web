@@ -1,97 +1,68 @@
-$(document).ready(function(){
-    var regiones=[];
-    $.getJSON('datos/regiones.json',function(datos){
-        regiones=datos;
-        datos.forEach(elemento => {
-           $("#region").append(`<option>${elemento.nombre}</option>`);
-        });
-    });
-   $("#region").on("change",function(e){
-       $('#comuna').find('option').remove().end();
-       var region = $(this).children("option:selected").val();
-       if(region!==""){
-           regiones.forEach(elemento=>{
-               if(elemento.nombre==region){
-                   $("#comuna").append("<option></option>");
-                   elemento.comunas.forEach(comuna=>{
-                       $("#comuna").append(`<option>${comuna}</option>`);
-                   });
-               }
-           })
-       }
-   });
-   $( ".needs-validation" ).validate( {
-       errorClass: "is-invalid",
-       validClass: "is-valid",
-       rules: {
-           usuario: {
-               required: true,
-           },
-           rut:{
-               required:true,
-               validacionRUT:true
-           },
-           email: {
-               required: true,
-           },
-           contrasenya:{
-               required: true,
-               pwcheck: true,
-               minlength: 8
-           },
-           recontrasenya:{
-               required: true,
-               equalTo: contrasenya
-           },
-           comuna:{
-               required:true
-           },
-           region:{
-               required: true
-           },
-           terminos:{
-               required: true
-           }
+document.getElementById('registrationForm').addEventListener('submit', function(event) {
+    // Prevenir el envío del formulario si hay errores de validación
+    event.preventDefault();
 
-       },
-       messages:{
-           usuario: {
-               required: "El nombre de usuario es requerido"
-           },
-           rut:{
-               required: "El rut es requerido",
-               validacionRUT:"No tiene el formato de rut (sin puntos y sin espacios)"
-           },
-           email:{
-               required: "El correo es requerido",
-               email: "Ingrese un correo válido"
-           },
-           contrasenya:{
-               required: "La contraseña es requerida",
-               pwcheck: "La contraseña no tiene un formato válido",
-               minlength: "Debe contener 8 caracteres"
-           }, 
-           recontrasenya:{
-               required: "La confirmación de la contraseña es requerida",
-               equalTo: "No son identicas"
-           },
-           region:{
-               required:"La región es requerida"
-           },
-           comuna:{
-               required: "La comuna es requerida"
-           },
-           terminos:{
-               required: "Es requerido aceptar términos y condiciones"
-           }
-       }
-   });
-   $.validator.addMethod("pwcheck",
-                       function(value, element) {
-                           return /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$/.test(value);
-   });
-   $.validator.addMethod("validacionRUT",
-                       function(value, element) {
-                           return /^\d{7,8}-[k|K|\d]{1}$/.test(value);
-   });
+    // Obtener los valores de los campos
+    const nombre = document.getElementById('nombre').value.trim();
+    const rut = document.getElementById('rut').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const region = document.getElementById('region').value.trim();
+    const comuna = document.getElementById('comuna').value.trim();
+    const password = document.getElementById('password').value.trim();
+    const confirmPassword = document.getElementById('confirmPassword').value.trim();
+
+    // Variables de control para errores
+    let hasError = false;
+
+    // Limpiar mensajes de error previos
+    document.querySelectorAll('.error').forEach(el => el.textContent = '');
+
+    // Validación del nombre
+    if (nombre === '') {
+        document.getElementById('nombreError').textContent = 'El nombre es obligatorio.';
+        hasError = true;
+    }
+
+    // Validación del RUT (simple validación de formato básico)
+    if (!/^\d{7,8}-[kK\d]$/.test(rut)) {
+        document.getElementById('rutError').textContent = 'RUT inválido. Debe tener el formato XXXXXXXX-X.';
+        hasError = true;
+    }
+
+    // Validación del correo electrónico
+    if (!/^\S+@\S+\.\S+$/.test(email)) {
+        document.getElementById('emailError').textContent = 'El correo electrónico no es válido.';
+        hasError = true;
+    }
+
+    // Validación de la región
+    if (region === '') {
+        document.getElementById('regionError').textContent = 'La región es obligatoria.';
+        hasError = true;
+    }
+
+    // Validación de la comuna
+    if (comuna === '') {
+        document.getElementById('comunaError').textContent = 'La comuna es obligatoria.';
+        hasError = true;
+    }
+
+    // Validación de la contraseña
+    if (password.length < 8) {
+        document.getElementById('passwordError').textContent = 'La contraseña debe tener al menos 8 caracteres.';
+        hasError = true;
+    }
+
+    // Validación de la confirmación de contraseña
+    if (password !== confirmPassword) {
+        document.getElementById('confirmPasswordError').textContent = 'Las contraseñas no coinciden.';
+        hasError = true;
+    }
+
+    // Si no hay errores, enviar el formulario
+    if (!hasError) {
+        // Aquí puedes hacer el envío del formulario
+        alert('Formulario enviado correctamente');
+        // this.submit(); // Si quieres enviar el formulario
+    }
 });
