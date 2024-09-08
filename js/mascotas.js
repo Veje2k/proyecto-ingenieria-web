@@ -21,10 +21,10 @@ function actualizarLista(){
     
             item.className = 'list-group-item';
             item.innerHTML = `<div class="row align-items-center">
-                        <div class="col-2">
-                        <img src="images/perfil-perro.jpg">
+                        <div class="col-3">
+                            <img src="images/perfil-perro.jpg" class="img-mascota">
                         </div>
-                        <div class="col-4">
+                        <div class="col-7">
 
                             <div class="d-flex align-items-center">
                                 <div><h5>Nombre: </h5></div>
@@ -48,10 +48,19 @@ function actualizarLista(){
                                 <div class="ms-3"><h6>${mascota.sexo}</h6></div>
 
                             </div>
+
+                            <div class="d-flex align-items-center">
+                                <div><h5>Peso: </h5></div>
+                                <div class="ms-3"><h6>${mascota.peso}</h6></div>
+
+                            </div>
                             
                         </div>
-                        <div class="col-5" style="font-size: 20px;">
-                            ${mascota.peso}
+
+
+                        <div class="col-2">
+                            <button class="btn btn-success pt-1 p-0" style="width: 45px;" data-bs-toggle="modal" data-bs-target="#exampleModal"><img src="images/exam-icon.png" alt="" class="icon-exam"></button>
+                            <p>Examenes</p>
                         </div>
 
                     </div>`;
