@@ -45,14 +45,14 @@ maquetación responsiva.
 
 ## Instalación
 
-- - Instalar Node.js y NPM
+1.- Instalar Node.js y NPM
 Para ejecutar un proyecto localmente con NPM, primero necesitas tener instalado Node.js (que incluye NPM).
 
-a) Descargar e instalar Node.js (incluye NPM)
+- - Descargar e instalar Node.js (incluye NPM)
     Visita la página oficial de Node.js.
     Descarga la versión de Node.js adecuada para tu sistema operativo (te recomiendo la versión LTS).
     Sigue las instrucciones para instalar Node.js. Una vez instalado, NPM también estará disponible.
-b) Verificar la instalación
+- - Verificar la instalación
     Abre una terminal y ejecuta los siguientes comandos para verificar que tanto Node.js como NPM están instalados correctamente:
     bash
     Copiar código
@@ -60,10 +60,10 @@ b) Verificar la instalación
     npm -v
     Estos comandos deben mostrar las versiones instaladas de Node.js y NPM, respectivamente.
 
-- - Inicializar el Proyecto
+2.- Inicializar el Proyecto
     Si el proyecto no tiene ya un archivo package.json, necesitas inicializarlo.
 
-a) Crear o inicializar package.json
+- - Crear o inicializar package.json
     Ve a la carpeta de tu proyecto en la terminal:
     bash
     Copiar código
@@ -73,18 +73,18 @@ a) Crear o inicializar package.json
     Copiar código
     npm init -y
     Esto creará un archivo package.json con la configuración predeterminada.
-- - Instalar http-server
+3.- Instalar http-server
     http-server es un servidor HTTP simple para servir tus archivos de forma local.
 
-    a) Instalar http-server globalmente
+- - Instalar http-server globalmente
     En la terminal, ejecuta el siguiente comando para instalar http-server globalmente en tu sistema:
     bash
     Copiar código
     npm install -g http-server
-- - Ejecutar el Proyecto Localmente
-    a) Preparar los archivos
+4.- Ejecutar el Proyecto Localmente
+- - Preparar los archivos
     Asegúrate de que todos los archivos HTML, CSS, y JavaScript estén en la carpeta principal de tu proyecto o en las subcarpetas adecuadas.
-    b) Iniciar el servidor
+- - Iniciar el servidor
     En la terminal, navega a la carpeta raíz de tu proyecto donde se encuentran los archivos que deseas servir:
     bash
     Copiar código
@@ -93,7 +93,7 @@ a) Crear o inicializar package.json
     bash
     Copiar código
     http-server
-- - Acceder al Proyecto en el Navegador
+5.- Acceder al Proyecto en el Navegador
     Una vez que el servidor esté ejecutándose, verás un mensaje en la terminal que muestra la URL donde tu proyecto está siendo servido, generalmente algo como:
 
     bash
