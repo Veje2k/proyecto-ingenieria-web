@@ -61,18 +61,10 @@ Para ejecutar un proyecto localmente con NPM, primero necesitas tener instalado 
     Estos comandos deben mostrar las versiones instaladas de Node.js y NPM, respectivamente.
 
 2.- Inicializar el Proyecto
-    Si el proyecto no tiene ya un archivo package.json, necesitas inicializarlo.
+    Instalar las dependencias de Node.
 
-- - Crear o inicializar package.json
-    Ve a la carpeta de tu proyecto en la terminal:
-    bash
-    Copiar código
-    cd ruta/de/tu/proyecto
-    Ejecuta el comando para inicializar el proyecto con NPM:
-    bash
-    Copiar código
-    npm init -y
-    Esto creará un archivo package.json con la configuración predeterminada.
+- - Ejecutar comando npm install dentro de la carpeta raíz del proyecto para descargar los paquetes de Node.
+
 
 3.- Instalar http-server
     http-server es un servidor HTTP simple para servir tus archivos de forma local.
