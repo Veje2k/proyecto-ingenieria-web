@@ -14,6 +14,7 @@
         <link href="styles/estilos.css" rel="stylesheet"/>
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
         <script src="js/app.js" type="text/javascript" defer></script>
+        <script src="js/registrar-mascota.js" type="text/javascript" defer></script>
     </head>
     <body>
         <header>
@@ -22,34 +23,44 @@
         <section>
 
             <div class="container">
-                <h3 class="text-center"> Registrar mascota</h3>
-                <form class="needs-validation" novalidate>
+                <h3 class="text-center">Registrar mascota</h3>
+                <form class="needs-validation" id="registroMascota" novalidate>
                     <div class="mb-3">
                         <label for="usuario" class="form-label">Nombre de mascota</label>
-                        <input type="text" class="form-control" id="usuario" name="usuario">
+                        <input type="text" class="form-control" id="usuario" name="usuario" required>
+                        <div class="invalid-feedback">Por favor, ingrese el nombre de la mascota.</div>
                     </div>
                     <div class="mb-3">
-                        <label for="rut" class="form-label">Tipo de animal</label>
-                        <input type="text" class="form-control" id="rut" name="rut">
+                        <label for="tipo" class="form-label">Tipo de animal</label>
+                        <input type="text" class="form-control" id="tipo" name="tipo" required>
+                        <div class="invalid-feedback">Por favor, ingrese el tipo de animal.</div>
                     </div>
                     <div class="mb-3">
-                        <label for="rut" class="form-label">Raza</label>
-                        <input type="text" class="form-control" id="rut" name="rut">
+                        <label for="raza" class="form-label">Raza</label>
+                        <input type="text" class="form-control" id="raza" name="raza" required>
+                        <div class="invalid-feedback">Por favor, ingrese la raza.</div>
                     </div>
                     <div class="mb-3">
-                        <label for="rut" class="form-label">Edad</label>
-                        <input type="text" class="form-control" id="rut" name="rut">
+                        <label for="edad" class="form-label">Edad</label>
+                        <input type="text" class="form-control" id="edad" name="edad" required>
+                        <div class="invalid-feedback">Por favor, ingrese una edad válida (números solamente).</div>
                     </div>
                     <div class="mb-3">
-                        <label for="rut" class="form-label">Sexo</label>
-                        <input type="text" class="form-control" id="rut" name="rut">
-                    </div>  
+                        <label for="sexo" class="form-label">Sexo</label>
+                        <select class="form-select" id="sexo" name="sexo" required>
+                            <option value="" disabled selected>Selecciona el sexo</option>
+                            <option value="macho">Macho</option>
+                            <option value="hembra">Hembra</option>
+                        </select>
+                        <div class="invalid-feedback">Por favor, seleccione el sexo.</div>
+                    </div>
                     <div class="mb-3">
-                        <label for="rut" class="form-label">Peso</label>
-                        <input type="text" class="form-control" id="rut" name="rut">
-                    </div>                           
-                </form>
-            
+                        <label for="peso" class="form-label">Peso</label>
+                        <input type="text" class="form-control" id="peso" name="peso" required>
+                        <div class="invalid-feedback">Por favor, ingrese el peso.</div>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Registrarse</button>                        
+                </form>            
             </div>
         </section>
         <footer>
