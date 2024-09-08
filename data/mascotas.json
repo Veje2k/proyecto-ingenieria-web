@@ -1,23 +1,23 @@
 [
     {
-        "nombre mascota": "Copito",
-        "tipo de animal": "Perro",
+        "nombre_mascota": "Copito",
+        "tipo_de_animal": "Perro",
         "raza": "Poodle",
         "edad": 12,
         "sexo": "Macho",
         "peso":"10 kg"
     },
     {
-        "nombre mascota": "fofo",
-        "tipo de animal": "Perro",
+        "nombre_mascota": "fofo",
+        "tipo_de_animal": "Perro",
         "raza": "Poodle",
         "edad": 11,
         "sexo": "Macho",
         "peso": "6.9 kg"
     },
     {
-        "nombre mascota": "Bruna",
-        "tipo de animal": "Gato",
+        "nombre_mascota": "Bruna",
+        "tipo_de_animal": "Gato",
         "raza": "Calico",
         "edad": 6,
         "sexo":"Hembra",
