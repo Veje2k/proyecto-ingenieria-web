@@ -1,16 +1,13 @@
-const { getJSON } = require("jquery");
-
 document.addEventListener('DOMContentLoaded', function() {
-    // URL del archivo JSON (puede ser una ruta local si está en el servidor)
-    const jsonURL = 'path/to/regiones.json'; // Asegúrate de colocar la ruta correcta al archivo JSON
-
+    const jsonURL = 'data/regiones.json';
+    const form = document.getElementById('registrationForm');
     const regionSelect = document.getElementById('region');
     const comunaSelect = document.getElementById('comuna');
-    
+
     let regionesComunas = [];
 
     // Cargar las regiones y comunas desde el archivo JSON
-    fetch()
+    fetch(jsonURL)
         .then(response => response.json())
         .then(data => {
             regionesComunas = data;
@@ -47,88 +44,81 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // Validación del formulario
-    document.getElementById('registrationForm').addEventListener('submit', function(event) {
-        event.preventDefault(); // Prevenir el envío por defecto
-        let isValid = true;
-
-        // Validar el nombre de usuario
+    form.addEventListener('submit', function(event) {
+        event.preventDefault();
+        event.stopPropagation();
+        
+        // Validación de usuario
         const usuario = document.getElementById('usuario');
         if (usuario.value.trim() === '') {
             usuario.classList.add('is-invalid');
-            isValid = false;
         } else {
             usuario.classList.remove('is-invalid');
         }
 
-        // Validar el RUT
+        // Validación de RUT (puedes ajustar la lógica según las reglas de tu país)
         const rut = document.getElementById('rut');
-        const rutPattern = /^\d{7,8}-[kK\d]$/; // Expresión regular simple para el RUT
-        if (!rutPattern.test(rut.value.trim())) {
+        if (!validarRUT(rut.value)) {
             rut.classList.add('is-invalid');
-            isValid = false;
         } else {
             rut.classList.remove('is-invalid');
         }
 
-        // Validar el correo electrónico
+        // Validación de email
         const email = document.getElementById('email');
-        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!emailPattern.test(email.value.trim())) {
+        if (!email.checkValidity()) {
             email.classList.add('is-invalid');
-            isValid = false;
         } else {
             email.classList.remove('is-invalid');
         }
 
-        // Validar la región
+        // Validación de región y comuna
         const region = document.getElementById('region');
+        const comuna = document.getElementById('comuna');
         if (region.value === '') {
             region.classList.add('is-invalid');
-            isValid = false;
         } else {
             region.classList.remove('is-invalid');
         }
-
-        // Validar la comuna
-        const comuna = document.getElementById('comuna');
         if (comuna.value === '') {
             comuna.classList.add('is-invalid');
-            isValid = false;
         } else {
             comuna.classList.remove('is-invalid');
         }
 
-        // Validar la contraseña
+        // Validación de contraseñas
         const contrasenya = document.getElementById('contrasenya');
-        if (contrasenya.value.length < 8) {
+        const recontrasenya = document.getElementById('recontrasenya');
+        if (contrasenya.value.trim() === '') {
             contrasenya.classList.add('is-invalid');
-            isValid = false;
         } else {
             contrasenya.classList.remove('is-invalid');
         }
 
-        // Validar la confirmación de contraseña
-        const recontrasenya = document.getElementById('recontrasenya');
-        if (recontrasenya.value !== contrasenya.value) {
+        if (recontrasenya.value.trim() === '' || recontrasenya.value !== contrasenya.value) {
             recontrasenya.classList.add('is-invalid');
-            isValid = false;
         } else {
             recontrasenya.classList.remove('is-invalid');
         }
 
-        // Validar aceptación de términos y condiciones
+        // Validación de términos y condiciones
         const terminos = document.getElementById('terminos');
         if (!terminos.checked) {
             terminos.classList.add('is-invalid');
-            isValid = false;
         } else {
             terminos.classList.remove('is-invalid');
         }
 
-        // Si es válido, se puede enviar el formulario
-        if (isValid) {
+        // Verifica si el formulario es válido antes de enviarlo
+        if (form.checkValidity()) {
             alert('Formulario enviado correctamente');
-            // Aquí podrías usar this.submit(); si quieres enviar el formulario realmente
+            form.submit();
         }
     });
+
+    // Función para validar el RUT (puedes reemplazarla con una lógica más avanzada)
+    function validarRUT(rut) {
+        // Simple validación de longitud y formato (puedes ajustar según sea necesario)
+        return rut.length >= 7 && /^[0-9]+-[0-9kK]$/.test(rut);
+    }
 });
