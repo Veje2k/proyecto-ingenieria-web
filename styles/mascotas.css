@@ -1,0 +1,13 @@
+img {
+    height: 125px;
+    border-radius: 50%;
+    border: 1px aliceblue groove;
+}
+
+li div {
+    color: black;
+}
+
+.list-group-item {
+    background-color: #b1deb8;
+}
