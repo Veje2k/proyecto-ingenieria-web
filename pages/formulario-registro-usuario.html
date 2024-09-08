@@ -29,61 +29,53 @@
                 <form id="registrationForm" class="needs-validation" novalidate>
                     <div class="mb-3">
                         <label for="usuario" class="form-label">Nombre de Usuario</label>
-                        <input type="text" class="form-control" id="usuario" name="usuario">
-                        <div class="invalid-feedback">El nombre de usuario es obligatorio.</div>
+                        <input type="text" class="form-control" id="usuario" name="usuario" required>
+                        <div class="invalid-feedback">Por favor, ingresa un nombre de usuario.</div>
                     </div>
-        
                     <div class="mb-3">
-                        <label for="rut" class="form-label">RUT</label>
-                        <input type="text" class="form-control" id="rut" name="rut">
-                        <div class="invalid-feedback">El RUT es inválido.</div>
+                        <label for="rut" class="form-label">Rut</label>
+                        <input type="text" class="form-control" id="rut" name="rut" required>
+                        <div class="invalid-feedback">Por favor, ingresa un RUT válido.</div>
                     </div>
-        
                     <div class="mb-3">
                         <label for="email" class="form-label">Correo Electrónico</label>
-                        <input type="email" class="form-control" id="email" name="email">
-                        <div class="invalid-feedback">El correo electrónico no es válido.</div>
+                        <input type="email" class="form-control" id="email" name="email" required>
+                        <div class="invalid-feedback">Por favor, ingresa un correo electrónico válido.</div>
                     </div>
-        
                     <div class="mb-3">
                         <label for="region" class="form-label">Región</label>
-                        <select class="form-select" id="region" name="region">
+                        <select class="form-select" id="region" name="region" required>
                             <option value="">Selecciona una región</option>
                         </select>
-                        <div class="invalid-feedback">Debe seleccionar una región.</div>
+                        <div class="invalid-feedback">Por favor, selecciona una región.</div>
                     </div>
-        
                     <div class="mb-3">
                         <label for="comuna" class="form-label">Comuna</label>
-                        <select class="form-select" id="comuna" name="comuna">
+                        <select class="form-select" id="comuna" name="comuna" required>
                             <option value="">Selecciona una comuna</option>
                         </select>
-                        <div class="invalid-feedback">Debe seleccionar una comuna.</div>
+                        <div class="invalid-feedback">Por favor, selecciona una comuna.</div>
                     </div>
-        
                     <div class="mb-3">
                         <label for="contrasenya" class="form-label">Contraseña</label>
-                        <input type="password" class="form-control" id="contrasenya" name="contrasenya">
-                        <div class="invalid-feedback">La contraseña debe tener al menos 8 caracteres.</div>
+                        <input type="password" class="form-control" id="contrasenya" name="contrasenya" required>
+                        <div class="invalid-feedback">Por favor, ingresa una contraseña.</div>
                     </div>
-        
                     <div class="mb-3">
                         <label for="recontrasenya" class="form-label">Confirmar Contraseña</label>
-                        <input type="password" class="form-control" id="recontrasenya" name="recontrasenya">
-                        <div class="invalid-feedback">Las contraseñas no coinciden.</div>
+                        <input type="password" class="form-control" id="recontrasenya" name="recontrasenya" required>
+                        <div class="invalid-feedback">Por favor, confirma tu contraseña.</div>
                     </div>
-        
                     <div class="mb-3 form-check">
-                        <input type="checkbox" class="form-check-input" id="terminos" name="terminos">
+                        <input type="checkbox" class="form-check-input" id="terminos" name="terminos" required>
                         <label class="form-check-label" for="terminos">Acepta términos y condiciones</label>
-                        <div class="invalid-feedback">Debe aceptar los términos y condiciones.</div>
+                        <div class="invalid-feedback">Debes aceptar los términos y condiciones.</div>
                     </div>
-        
                     <button type="submit" class="btn btn-primary">Registrarse</button>
                 </form>
             </div>
-        </section>       
-
+        </section>
+        
         <footer></footer>
 
         <script src="" async defer></script>

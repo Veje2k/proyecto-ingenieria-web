@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     let regionesComunas = [];
 
-    // Cargar las regiones y comunas desde el archivo JSON
+    /*Cargar las regiones y comunas desde el archivo JSON*/
     fetch(jsonURL)
         .then(response => response.json())
         .then(data => {
@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', function() {
         })
         .catch(error => console.error('Error cargando el JSON:', error));
 
-    // Poblar las regiones en el select de región
+    /*Poblar las regiones en el select de región*/
     function poblarRegiones(regionesComunas) {
         regionesComunas.forEach(region => {
             let option = document.createElement('option');
@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Cambio en el select de región para cargar las comunas
+    /* Cambio en el select de región para cargar las comunas*/
     regionSelect.addEventListener('change', function() {
         const selectedRegion = this.value;
         comunaSelect.innerHTML = '<option value="">Selecciona una comuna</option>'; // Resetear el select de comuna
@@ -43,12 +43,12 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // Validación del formulario
+    /*Validación del formulario*/
     form.addEventListener('submit', function(event) {
         event.preventDefault();
         event.stopPropagation();
         
-        // Validación de usuario
+        /*Validación de usuario*/
         const usuario = document.getElementById('usuario');
         if (usuario.value.trim() === '') {
             usuario.classList.add('is-invalid');
@@ -56,7 +56,7 @@ document.addEventListener('DOMContentLoaded', function() {
             usuario.classList.remove('is-invalid');
         }
 
-        // Validación de RUT (puedes ajustar la lógica según las reglas de tu país)
+        /* Validación de RUT (puedes ajustar la lógica según las reglas de tu país)*/
         const rut = document.getElementById('rut');
         if (!validarRUT(rut.value)) {
             rut.classList.add('is-invalid');
@@ -64,7 +64,7 @@ document.addEventListener('DOMContentLoaded', function() {
             rut.classList.remove('is-invalid');
         }
 
-        // Validación de email
+        /*Validación de email*/
         const email = document.getElementById('email');
         if (!email.checkValidity()) {
             email.classList.add('is-invalid');
@@ -72,7 +72,7 @@ document.addEventListener('DOMContentLoaded', function() {
             email.classList.remove('is-invalid');
         }
 
-        // Validación de región y comuna
+        /* Validación de región y comuna*/
         const region = document.getElementById('region');
         const comuna = document.getElementById('comuna');
         if (region.value === '') {
@@ -86,7 +86,7 @@ document.addEventListener('DOMContentLoaded', function() {
             comuna.classList.remove('is-invalid');
         }
 
-        // Validación de contraseñas
+        /* Validación de contraseñas*/
         const contrasenya = document.getElementById('contrasenya');
         const recontrasenya = document.getElementById('recontrasenya');
         if (contrasenya.value.trim() === '') {
@@ -101,7 +101,7 @@ document.addEventListener('DOMContentLoaded', function() {
             recontrasenya.classList.remove('is-invalid');
         }
 
-        // Validación de términos y condiciones
+        /* Validación de términos y condiciones*/
         const terminos = document.getElementById('terminos');
         if (!terminos.checked) {
             terminos.classList.add('is-invalid');
@@ -109,16 +109,16 @@ document.addEventListener('DOMContentLoaded', function() {
             terminos.classList.remove('is-invalid');
         }
 
-        // Verifica si el formulario es válido antes de enviarlo
+        /* Verifica si el formulario es válido antes de enviarlo*/
         if (form.checkValidity()) {
             alert('Formulario enviado correctamente');
             form.submit();
         }
     });
 
-    // Función para validar el RUT (puedes reemplazarla con una lógica más avanzada)
+    /* Función para validar el RUT (puedes reemplazarla con una lógica más avanzada)*/
     function validarRUT(rut) {
-        // Simple validación de longitud y formato (puedes ajustar según sea necesario)
+        /* Simple validación de longitud y formato (puedes ajustar según sea necesario)*/
         return rut.length >= 7 && /^[0-9]+-[0-9kK]$/.test(rut);
     }
 });
