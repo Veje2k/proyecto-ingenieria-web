@@ -116,9 +116,35 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    /* Función para validar el RUT (puedes reemplazarla con una lógica más avanzada)*/
+    /* Función para validar el RUT con formato de puntos y guion (ej: 12.345.678-9) */
     function validarRUT(rut) {
-        /* Simple validación de longitud y formato (puedes ajustar según sea necesario)*/
-        return rut.length >= 7 && /^[0-9]+-[0-9kK]$/.test(rut);
+        /* Expresión regular para validar formato RUT chileno con puntos y guion */
+        const rutRegex = /^[0-9]{1,2}\.[0-9]{3}\.[0-9]{3}-[0-9kK]$/;
+
+        /* Validar formato correcto */
+        if (!rutRegex.test(rut)) {
+            return false;
+        }
+
+        /* Remover puntos y guion para realizar la validación del dígito verificador */
+        let rutLimpio = rut.replace(/\./g, '').replace(/-/g, '');
+
+        /* Separar cuerpo del dígito verificador */
+        const cuerpo = rutLimpio.slice(0, -1);
+        const dv = rutLimpio.slice(-1).toUpperCase();
+
+        /* Validar el dígito verificador */
+        let suma = 0;
+        let multiplo = 2;
+
+        for (let i = cuerpo.length - 1; i >= 0; i--) {
+            suma += multiplo * parseInt(cuerpo.charAt(i));
+            multiplo = multiplo === 7 ? 2 : multiplo + 1;
+        }
+
+        const dvEsperado = 11 - (suma % 11);
+        const dvFinal = dvEsperado === 11 ? '0' : dvEsperado === 10 ? 'K' : dvEsperado.toString();
+
+        return dv === dvFinal;
     }
 });
