@@ -73,34 +73,3 @@ body {
         width: 90%;
     }
 }
-/* Estilo base del botón */
-.availability-btn {
-    background-color: rgba(144, 238, 144, 0.8); /* Verde claro opaco */
-    color: white;
-    border: none;
-    padding: 12px 24px;
-    text-align: center;
-    text-decoration: none;
-    font-size: 16px;
-    margin-top: 10px;
-    cursor: pointer;
-    border-radius: 25px; /* Bordes redondeados */
-    transition: all 0.3s ease; /* Animación suave */
-    display: inline-block;
-    width: 100%; /* Responsivo, ocupa todo el ancho en dispositivos pequeños */
-    max-width: 200px; /* Limita el ancho máximo */
-}
-
-/* Hover del botón */
-.availability-btn:hover {
-    background-color: rgba(144, 238, 144, 1); /* Verde más opaco */
-    transform: scale(1.05); /* Efecto de agrandamiento */
-}
-
-/* Hacer que los botones sean más pequeños en pantallas pequeñas */
-@media (max-width: 768px) {
-    .availability-btn {
-        font-size: 14px;
-        padding: 10px 20px;
-    }
-}
