@@ -73,6 +73,7 @@ Para ejecutar un proyecto localmente con NPM, primero necesitas tener instalado 
     Copiar código
     npm init -y
     Esto creará un archivo package.json con la configuración predeterminada.
+
 3.- Instalar http-server
     http-server es un servidor HTTP simple para servir tus archivos de forma local.
 
@@ -81,6 +82,7 @@ Para ejecutar un proyecto localmente con NPM, primero necesitas tener instalado 
     bash
     Copiar código
     npm install -g http-server
+
 4.- Ejecutar el Proyecto Localmente
 - - Preparar los archivos
     Asegúrate de que todos los archivos HTML, CSS, y JavaScript estén en la carpeta principal de tu proyecto o en las subcarpetas adecuadas.
@@ -93,6 +95,7 @@ Para ejecutar un proyecto localmente con NPM, primero necesitas tener instalado 
     bash
     Copiar código
     http-server
+    
 5.- Acceder al Proyecto en el Navegador
     Una vez que el servidor esté ejecutándose, verás un mensaje en la terminal que muestra la URL donde tu proyecto está siendo servido, generalmente algo como:
 
