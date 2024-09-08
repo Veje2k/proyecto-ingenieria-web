@@ -37,7 +37,7 @@ El objetivo del proyecto se centra en una plataforma que permite la gestión int
 
 ## Prototipado en Figma
 
-[Prototipo Wireframe](https://www.figma.com/proto/OTowrJNe7AAEzTw5mqKgTv/DTS)
+[Prototipo Wireframe](https://www.figma.com/design/7zBLHvZevefZ7TskdLj4lE/proyecto-ingenieria-web?node-id=0-1&t=ssWzkNsHk9A4cfor-1)
 
 ## Maquetación Responsiva
 La aplicación será desarrollada con HTML5, CSS3 y JavaScript, utilizando frameworks como Bootstrap para la
@@ -87,7 +87,7 @@ Para ejecutar un proyecto localmente con NPM, primero necesitas tener instalado 
     bash
     Copiar código
     http-server
-    
+
 5.- Acceder al Proyecto en el Navegador
     Una vez que el servidor esté ejecutándose, verás un mensaje en la terminal que muestra la URL donde tu proyecto está siendo servido, generalmente algo como:
 
