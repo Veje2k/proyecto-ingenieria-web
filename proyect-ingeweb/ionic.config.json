@@ -1,0 +1,7 @@
+{
+  "name": "proyect-ingeweb",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react-vite"
+}
