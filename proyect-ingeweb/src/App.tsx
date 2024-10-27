@@ -35,19 +35,28 @@ import './theme/variables.css';
 
 setupIonicReact();
 
+import React from 'react';
+import Navbar from './components/navbar';
+import Nosotros from './pages/nosotros';
+import VerProfesionales from './pages/ver-profesionales';
+import Vacunas from './pages/services/vacunas';
+import Peluqueria from './pages/services/peluqueria';
+import PedirHora from './pages/services/pedir-hora';
+
 const App: React.FC = () => (
   <IonApp>
     <IonReactRouter>
+      <Navbar />
       <IonRouterOutlet>
-        <Route exact path="/home">
-          <Home />
-        </Route>
-        <Route exact path="/">
-          <Redirect to="/home" />
-        </Route>
+        <Route path="/home" component={Home} exact />
+        <Route path="/nosotros" component={Nosotros} exact />
+        <Route path="/ver-profesionales" component={VerProfesionales} exact />
+        <Route path="/servicios/vacunas" component={Vacunas} exact />
+        <Route path="/servicios/peluqueria" component={Peluqueria} exact />
+        <Route path="/servicios/pedir-hora" component={PedirHora} exact />
+        <Redirect from="/" to="/home" exact />
       </IonRouterOutlet>
     </IonReactRouter>
   </IonApp>
-);
-
+); 
 export default App;
