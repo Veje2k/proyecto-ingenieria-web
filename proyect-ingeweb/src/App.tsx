@@ -42,6 +42,7 @@ import VerProfesionales from './pages/ver-profesionales';
 import Vacunas from './pages/services/vacunas';
 import Peluqueria from './pages/services/peluqueria';
 import PedirHora from './pages/services/pedir-hora';
+import Footer from './components/footer';
 
 const App: React.FC = () => (
   <IonApp>
@@ -57,6 +58,9 @@ const App: React.FC = () => (
         <Redirect from="/" to="/home" exact />
       </IonRouterOutlet>
     </IonReactRouter>
+    <Footer>
+      
+    </Footer>
   </IonApp>
 ); 
 export default App;
