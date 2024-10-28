@@ -1,4 +1,3 @@
-// src/pages/VerProfesionales.tsx
 import React, { useState } from 'react';
 import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent, IonCard, IonCardHeader, IonCardTitle, IonCardSubtitle, IonCardContent, IonButton } from '@ionic/react';
 import './ver-profesionales.css';

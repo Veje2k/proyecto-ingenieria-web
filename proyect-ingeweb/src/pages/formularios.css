@@ -1,0 +1,45 @@
+/* src/pages/formularios.css */
+
+/* Estilo de la página */
+body {
+    background-color: #c4e1c4; /* Fondo verde claro */
+    font-family: 'Arial', sans-serif; /* Fuente básica */
+    color: #f7e39e; /* Texto en amarillo suave */
+  }
+  
+  /* Estilo general para los formularios */
+  .form-container {
+    max-width: 400px; /* Ancho máximo del formulario */
+    margin: auto; /* Centrar el formulario */
+    padding: 20px; /* Relleno interno */
+    background-color: white; /* Fondo blanco para el formulario */
+    border-radius: 12px; /* Bordes redondeados */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+    margin-top: 40px; /* Espacio superior para separar del borde superior */
+  }
+  
+  /* Estilo para los items del formulario */
+  .ion-item {
+    margin-bottom: 15px; /* Espacio entre los elementos del formulario */
+  }
+  
+  /* Estilo de los inputs */
+  ion-input {
+    border-radius: 8px; /* Bordes redondeados en el input */
+    padding: 10px; /* Relleno interno en el input */
+  }
+  
+  /* Estilo del botón */
+  .ion-button {
+    --background: #4267b2; /* Color de fondo del botón (azul de Facebook) */
+    --color: white; /* Color del texto del botón */
+    border-radius: 8px; /* Bordes redondeados en el botón */
+    margin-top: 10px; /* Espacio superior para el botón */
+    font-weight: bold; /* Negrita en el texto del botón */
+  }
+  
+  /* Estilo del toast */
+  .toast {
+    border-radius: 10px; /* Bordes redondeados en el toast */
+  }
+  

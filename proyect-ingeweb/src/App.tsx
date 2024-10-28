@@ -46,6 +46,8 @@ import Footer from './components/footer';
 import SeleccionEspecialidad from './pages/Seleccion-especialidad';
 import ReservarCita from './pages/Reservar-cita';
 import Citas from './pages/citas';
+import RegistrarCuenta from './pages/registrar-cuenta';
+import Login from './pages/Inicio-sesion';
 
 const App: React.FC = () => (
   <IonApp>
@@ -62,12 +64,12 @@ const App: React.FC = () => (
         <Route path="/servicios/pedir-hora" component={PedirHora} exact />
         <Route path="/citas" component={Citas} exact />
 
+        <Route path="/inicio-sesion" component={Login} exact />
+        <Route path="/registrar-cuenta" component={RegistrarCuenta} exact />
         <Redirect from="/" to="/home" exact />
       </IonRouterOutlet>
     </IonReactRouter>
-    <Footer>
-      
-    </Footer>
+    <Footer/ >
   </IonApp>
 ); 
 export default App;
