@@ -43,6 +43,9 @@ import Vacunas from './pages/services/vacunas';
 import Peluqueria from './pages/services/peluqueria';
 import PedirHora from './pages/services/pedir-hora';
 import Footer from './components/footer';
+import SeleccionEspecialidad from './pages/Seleccion-especialidad';
+import ReservarCita from './pages/Reservar-cita';
+import Citas from './pages/citas';
 
 const App: React.FC = () => (
   <IonApp>
@@ -52,9 +55,13 @@ const App: React.FC = () => (
         <Route path="/home" component={Home} exact />
         <Route path="/nosotros" component={Nosotros} exact />
         <Route path="/ver-profesionales" component={VerProfesionales} exact />
+        <Route path="/reservar-cita" component={ReservarCita} exact />
+        <Route path="/seleccion-especialidad" component={SeleccionEspecialidad} exact />
         <Route path="/servicios/vacunas" component={Vacunas} exact />
         <Route path="/servicios/peluqueria" component={Peluqueria} exact />
         <Route path="/servicios/pedir-hora" component={PedirHora} exact />
+        <Route path="/citas" component={Citas} exact />
+
         <Redirect from="/" to="/home" exact />
       </IonRouterOutlet>
     </IonReactRouter>

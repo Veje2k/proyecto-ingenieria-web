@@ -1,0 +1,16 @@
+[
+    {
+        "id": 1,
+        "fecha": "2024-10-30",
+        "descripcion": "jdlksajdfklajslkf",
+        "hora": "10:00",
+        "estado": "pendiente"
+    },
+    {
+        "id": 2,
+        "fecha": "2024-10-31",
+        "descripcion": "jdlksajdfklajslkf",
+        "hora": "12:00",
+        "estado": "completada"
+    }
+]

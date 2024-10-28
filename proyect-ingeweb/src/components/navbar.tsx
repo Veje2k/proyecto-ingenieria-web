@@ -40,8 +40,11 @@ const Navbar: React.FC = () => {
                 <IonItem button onClick={() => { history.push('/servicios/peluqueria'); setShowPopover(false); }}>
                     Peluquería Canina
                 </IonItem>
-                <IonItem button onClick={() => { history.push('/servicios/pedir-hora'); setShowPopover(false); }}>
+                <IonItem button onClick={() => { history.push('/seleccion-especialidad'); setShowPopover(false); }}>
                     Pedir Hora de Atención
+                </IonItem>
+                <IonItem button onClick={() => { history.push('/citas'); setShowPopover(false); }}>
+                    Ver citas
                 </IonItem>
                 </IonList>
             </IonPopover>
