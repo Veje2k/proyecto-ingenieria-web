@@ -6,7 +6,7 @@ const VerProfesionales: React.FC = () => {
     const [currentIndex, setCurrentIndex] = useState(0);
 
     const veterinarios = [
-        { nombre: "Dr. Juan Pérez", especialidad: "Medicina General", descripcion: "Dr. Pérez tiene más de 10 años de experiencia en medicina general.", img: "ruta-a-imagen-veterinario1.jpg" },
+        { nombre: "Dr. Juan Pérez", especialidad: "Medicina General", descripcion: "Dr. Pérez tiene más de 10 años de experiencia en medicina general.", img: "dia-del-veterinario_1440x810.jpg" },
         { nombre: "Dra. Laura Martínez", especialidad: "Cirugía", descripcion: "La Dra. Martínez es experta en cirugía veterinaria y ha realizado procedimientos avanzados.", img: "ruta-a-imagen-veterinario2.jpg" },
         { nombre: "Dr. Carlos Ruiz", especialidad: "Dermatología", descripcion: "El Dr. Ruiz se especializa en dermatología animal y ofrece tratamientos avanzados.", img: "ruta-a-imagen-veterinario3.jpg" },
         { nombre: "Dra. Ana Gómez", especialidad: "Comportamiento Animal", descripcion: "La Dra. Gómez ayuda a mejorar la conducta de mascotas.", img: "ruta-a-imagen-veterinario4.jpg" },
