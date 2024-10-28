@@ -48,6 +48,7 @@ import ReservarCita from './pages/Reservar-cita';
 import Citas from './pages/citas';
 import RegistrarCuenta from './pages/registrar-cuenta';
 import Login from './pages/Inicio-sesion';
+import VerMapa from './pages/ver-mapa';
 
 const App: React.FC = () => (
   <IonApp>
@@ -63,6 +64,7 @@ const App: React.FC = () => (
         <Route path="/servicios/peluqueria" component={Peluqueria} exact />
         <Route path="/servicios/pedir-hora" component={PedirHora} exact />
         <Route path="/citas" component={Citas} exact />
+        <Route path="/mapa" component={VerMapa} exact />
 
         <Route path="/inicio-sesion" component={Login} exact />
         <Route path="/registrar-cuenta" component={RegistrarCuenta} exact />
