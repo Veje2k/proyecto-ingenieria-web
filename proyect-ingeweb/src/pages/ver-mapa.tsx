@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent, IonFooter } from '@ionic/react';
-import mapboxgl from 'mapbox-gl'
+import mapboxgl from 'mapbox-gl';
 
 const VerMapa: React.FC = () => {
   useEffect(() => {
