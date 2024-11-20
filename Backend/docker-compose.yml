@@ -1,0 +1,22 @@
+services:
+    postgres_db:
+      image: postgres:15
+      container_name: postgres_petmedic
+      ports: 
+        - "5433:5432"
+      environment:
+        POSTGRES_USER: ${DB_USER}
+        POSTGRES_PASSWORD: ${DB_PASSWORD}
+        POSTGRES_DB: ${DB_NAME}
+      volumes:
+        - postgres_data:/var/lib/postgresql/data
+    pgadmin:
+      image: dpage/pgadmin4
+      container_name: pgadmin_petmedic
+      ports:
+        - "5050:80"
+      environment:
+        PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL}
+        PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD}
+volumes:
+  postgres_data:
