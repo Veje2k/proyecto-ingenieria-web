@@ -5,6 +5,7 @@ import sequelize from "./config/database.js";
 import userRoutes from "./routes/userRoutes.js";
 import petRoutes from "./routes/petRoutes.js";
 import serviceRoutes from "./routes/serviceRoutes.js";
+import professionalRoutes from "./routes/professionalRoutes.js"
 
 dotenv.config();
 
@@ -16,9 +17,10 @@ app.use(cors());
 app.use(express.json());
 
 // Rutas
-app.use("/users", userRoutes);
-app.use("/pets", petRoutes);
-app.use("/services", serviceRoutes);
+app.use("/usuarios", userRoutes);
+app.use("/mascotas", petRoutes);
+app.use("/servicio", serviceRoutes);
+app.use("/profesionales", professionalRoutes);
 
 // Sincronizar la base de datos y arrancar el servidor
 sequelize
