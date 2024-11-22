@@ -1,6 +1,9 @@
 import { Sequelize } from "sequelize";
 import config from "./dotenv.js"; // Importamos la configuración centralizada
 
+console.log('process.env.DB_password',process.env.DB_PASSWORD);
+console.log('DB Password:', config.db.password);
+
 const sequelize = new Sequelize(
     config.db.database,
     config.db.user,
