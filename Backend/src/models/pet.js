@@ -2,7 +2,7 @@ import { DataTypes } from "sequelize";
 import sequelize from "../config/database.js";
 import User from "./user.js";
 
-const Pet = sequelize.define("Pet", {
+const Pet = sequelize.define("Mascota", {
     id_mascota: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
     nombre: { type: DataTypes.STRING, allowNull: false },
     especie: { type: DataTypes.STRING },
