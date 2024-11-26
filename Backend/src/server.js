@@ -6,6 +6,7 @@ import userRoutes from "./routes/userRoutes.js";
 import petRoutes from "./routes/petRoutes.js";
 import serviceRoutes from "./routes/serviceRoutes.js";
 import professionalRoutes from "./routes/professionalRoutes.js"
+import { verifyToken } from "./middlewares/authMiddleware.js"; // Importar el middleware de autenticación
 
 dotenv.config();
 
@@ -16,11 +17,13 @@ const PORT = process.env.PORT || 5000;
 app.use(cors());
 app.use(express.json());
 
-// Rutas
+// Rutas públicas
 app.use("/usuarios", userRoutes);
-app.use("/mascotas", petRoutes);
-app.use("/servicio", serviceRoutes);
-app.use("/profesionales", professionalRoutes);
+
+// Rutas protegidas
+app.use("/mascotas", verifyToken, petRoutes);
+app.use("/servicio", verifyToken, serviceRoutes);
+app.use("/profesionales", verifyToken, professionalRoutes);
 
 // Sincronizar la base de datos y arrancar el servidor
 sequelize
