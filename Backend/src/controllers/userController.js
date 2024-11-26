@@ -8,14 +8,14 @@ export const registerUser = async (req, res) => {
 
         const hashedPassword = await bcrypt.hash(contrasena, 10);
         const newUser = await User.create({
-        nombre,
-        apellido,
-        edad,
-        correo,
-        contrasena: hashedPassword,
-        direccion,
-        rut,
-        telefono,
+            nombre,
+            apellido,
+            edad,
+            correo,
+            contrasena: hashedPassword,
+            direccion,
+            rut,
+            telefono,
         });
 
         res.status(201).json({ message: "Usuario registrado exitosamente", user: newUser });
