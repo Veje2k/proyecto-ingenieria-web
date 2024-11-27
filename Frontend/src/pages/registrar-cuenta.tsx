@@ -25,6 +25,7 @@ const RegistrarCuenta: React.FC = () => {
     const [termsAccepted, setTermsAccepted] = useState(false);
     const [showToast, setShowToast] = useState(false);
     const [toastMessage, setToastMessage] = useState('');
+    
 
     const handleRegister = async () => {
         if (!name || !surname || !age || !email || !password || !confirmPassword || !address || !rut || !phone) {
