@@ -15,16 +15,19 @@ const isValidEmail = (email: string) => {
 const RegistrarCuenta: React.FC = () => {
     const [name, setName] = useState('');
     const [surname, setSurname] = useState('');
-    const [rut, setRut] = useState('');
+    const [age, setAge] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
+    const [address, setAddress] = useState('');
+    const [rut, setRut] = useState('');
+    const [phone, setPhone] = useState('');
     const [termsAccepted, setTermsAccepted] = useState(false);
     const [showToast, setShowToast] = useState(false);
     const [toastMessage, setToastMessage] = useState('');
 
     const handleRegister = async () => {
-        if (!name || !surname || !rut || !email || !password || !confirmPassword) {
+        if (!name || !surname || !age || !email || !password || !confirmPassword || !address || !rut || !phone) {
             setToastMessage('Por favor, completa todos los campos.');
             setShowToast(true);
             return;
@@ -57,9 +60,12 @@ const RegistrarCuenta: React.FC = () => {
         const userData = {
             nombre: name,
             apellido: surname,
-            rut,
+            edad: age,
             correo: email,
             contrasena: password,
+            direccion: address,
+            rut,
+            telefono: phone,
         };
 
         try {
@@ -76,10 +82,13 @@ const RegistrarCuenta: React.FC = () => {
                 setToastMessage('Registro exitoso.');
                 setName('');
                 setSurname('');
-                setRut('');
+                setAge('');
                 setEmail('');
                 setPassword('');
                 setConfirmPassword('');
+                setAddress('');
+                setRut('');
+                setPhone('');
                 setTermsAccepted(false);
             } else {
                 const errorData = await response.json();
@@ -109,8 +118,8 @@ const RegistrarCuenta: React.FC = () => {
                     <IonInput value={surname} onIonChange={e => setSurname(e.detail.value!)} />
                 </IonItem>
                 <IonItem className="form-item">
-                    <IonLabel position="floating">RUT</IonLabel>
-                    <IonInput value={rut} onIonChange={e => setRut(e.detail.value!)} />
+                    <IonLabel position="floating">Edad</IonLabel>
+                    <IonInput type="number" value={age} onIonChange={e => setAge(e.detail.value!)} />
                 </IonItem>
                 <IonItem className="form-item">
                     <IonLabel position="floating">Correo Electrónico</IonLabel>
@@ -123,6 +132,18 @@ const RegistrarCuenta: React.FC = () => {
                 <IonItem className="form-item">
                     <IonLabel position="floating">Confirmar Contraseña</IonLabel>
                     <IonInput type="password" value={confirmPassword} onIonChange={e => setConfirmPassword(e.detail.value!)} />
+                </IonItem>
+                <IonItem className="form-item">
+                    <IonLabel position="floating">Dirección</IonLabel>
+                    <IonInput value={address} onIonChange={e => setAddress(e.detail.value!)} />
+                </IonItem>
+                <IonItem className="form-item">
+                    <IonLabel position="floating">RUT</IonLabel>
+                    <IonInput value={rut} onIonChange={e => setRut(e.detail.value!)} />
+                </IonItem>
+                <IonItem className="form-item">
+                    <IonLabel position="floating">Teléfono</IonLabel>
+                    <IonInput type="tel" value={phone} onIonChange={e => setPhone(e.detail.value!)} />
                 </IonItem>
                 <IonItem className="form-item">
                     <IonCheckbox checked={termsAccepted} onIonChange={e => setTermsAccepted(e.detail.checked!)} />
