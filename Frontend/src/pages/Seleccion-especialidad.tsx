@@ -56,7 +56,7 @@ const SeleccionEspecialidad: React.FC = () => {
                         <p className="card-text">{especialidad.description}</p>
                         <IonButton 
                           expand="full" 
-                          onClick={() => history.push('/reservar-cita')}
+                          onClick={() => history.push('/reservar-cita', {especialidad})}
                         >
                           Reservar hora
                         </IonButton>

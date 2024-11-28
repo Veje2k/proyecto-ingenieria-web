@@ -1,2 +1,10 @@
 /* For information on how to create your own theme, please see:
 http://ionicframework.com/docs/theming/ */
+
+ion-content {
+    --background: url("../pages/img/background.webp"); /* Ruta relativa a la imagen */
+    --background-size: cover;
+    --background-position: center;
+    --background-repeat: no-repeat;
+    --background-attachment: fixed; /* Mantén el fondo fijo mientras haces scroll */
+  }

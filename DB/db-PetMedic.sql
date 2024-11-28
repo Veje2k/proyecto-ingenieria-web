@@ -48,7 +48,10 @@ CREATE TABLE Servicio (
     id_tipo_servicio INT NOT NULL,
     id_veterinario INT NOT NULL,
     id_mascota INT NOT NULL,
+    id_usuario INT NOT NULL,
     CONSTRAINT fk_tipo_servicio FOREIGN KEY (id_tipo_servicio) REFERENCES TipoServicio (id_tipo_servicio),
     CONSTRAINT fk_veterinario FOREIGN KEY (id_veterinario) REFERENCES Profesional (id_profesional),
-    CONSTRAINT fk_mascota FOREIGN KEY (id_mascota) REFERENCES Mascota (id_mascota)
+    CONSTRAINT fk_mascota FOREIGN KEY (id_mascota) REFERENCES Mascota (id_mascota),
+    CONSTRAINT fk_usuario FOREIGN KEY (id_usuario) REFERENCES Usuario (id_usuario),
+
 );
