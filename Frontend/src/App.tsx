@@ -1,4 +1,4 @@
-import { Redirect, Route } from 'react-router-dom';
+import { Redirect, Route, useHistory } from 'react-router-dom';
 import { IonApp, IonRouterOutlet, setupIonicReact } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
 import Home from './pages/Home';
@@ -35,13 +35,12 @@ import './theme/variables.css';
 
 setupIonicReact();
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Navbar from './components/navbar';
 import Nosotros from './pages/nosotros';
 import VerProfesionales from './pages/ver-profesionales';
-import Vacunas from './pages/services/vacunas';
-import Peluqueria from './pages/services/peluqueria';
-import PedirHora from './pages/services/pedir-hora';
+import Vacunas from './pages/vacunas';
+import Peluqueria from './pages/peluqueria';
 import Footer from './components/footer';
 import SeleccionEspecialidad from './pages/Seleccion-especialidad';
 import ReservarCita from './pages/Reservar-cita';
@@ -49,29 +48,60 @@ import Citas from './pages/citas';
 import RegistrarCuenta from './pages/registrar-cuenta';
 import Login from './pages/Inicio-sesion';
 import VerMapa from './pages/ver-mapa';
+import Dashboard from './pages/dashboard';
 
-const App: React.FC = () => (
-  <IonApp>
-    <IonReactRouter>
-      <Navbar />
-      <IonRouterOutlet>
-        <Route path="/home" component={Home} exact />
-        <Route path="/nosotros" component={Nosotros} exact />
-        <Route path="/ver-profesionales" component={VerProfesionales} exact />
-        <Route path="/reservar-cita" component={ReservarCita} exact />
-        <Route path="/seleccion-especialidad" component={SeleccionEspecialidad} exact />
-        <Route path="/servicios/vacunas" component={Vacunas} exact />
-        <Route path="/servicios/peluqueria" component={Peluqueria} exact />
-        <Route path="/servicios/pedir-hora" component={PedirHora} exact />
-        <Route path="/citas" component={Citas} exact />
-        <Route path="/mapa" component={VerMapa} exact />
+const App: React.FC = () => {
 
-        <Route path="/inicio-sesion" component={Login} exact />
-        <Route path="/registrar-cuenta" component={RegistrarCuenta} exact />
-        <Redirect from="/" to="/home" exact />
-      </IonRouterOutlet>
-    </IonReactRouter>
-    <Footer/ >
-  </IonApp>
-); 
+  const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
+  const history = useHistory();
+
+  // Comprobar el estado de autenticación al cargar la página
+  useEffect(() => {
+    const userId = localStorage.getItem('userId');
+    if (userId) {
+      setIsAuthenticated(true);
+    }
+  }, []);
+
+  // Función para manejar el login
+  const handleLogin = (userId: string) => {
+    localStorage.setItem('userId', userId);
+    setIsAuthenticated(true);
+    history.push('/home');  // Redirige al home después de login
+  };
+
+  // Función para manejar el logout
+  const handleLogout = () => {
+    localStorage.removeItem('userId');
+    setIsAuthenticated(false);
+    history.push('/home');  // Redirige al home después de logout
+  };
+
+
+  return (
+    <IonApp>
+      <IonReactRouter>
+        <Navbar isAuthenticated={isAuthenticated} onLogout={handleLogout} />
+        <IonRouterOutlet>
+          <Route path="/home" component={Home} exact />
+          <Route path="/nosotros" component={Nosotros} exact />
+          <Route path="/ver-profesionales" component={VerProfesionales} exact />
+          <Route path="/reservar-cita" component={ReservarCita} exact />
+          <Route path="/seleccion-especialidad" component={SeleccionEspecialidad} exact />
+          <Route path="/servicios/vacunas" component={Vacunas} exact />
+          <Route path="/servicios/peluqueria" component={Peluqueria} exact />
+          <Route path="/citas" component={Citas} exact />
+          <Route path="/mapa" component={VerMapa} exact />
+
+          <Route path="/inicio-sesion" render={() => <Login onLogin={handleLogin} />} exact />
+          <Route path="/registrar-cuenta" component={RegistrarCuenta} exact />
+          <Route path="/dashboard" component={Dashboard} exact />
+
+          <Redirect from="/" to="/home" exact />
+        </IonRouterOutlet>
+      </IonReactRouter>
+      <Footer/ >
+    </IonApp>
+  ); 
+};
 export default App;

@@ -1,0 +1,37 @@
+/* VerMapa.css */
+
+/* Centrar todo el contenido de la página */
+.content-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+  }
+  
+  /* Titulo centrado */
+  .text-center {
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  
+  /* Estilo del mapa */
+  #map {
+    width: 100%; /* El mapa ocupará el 90% del ancho de la pantalla */
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave para dar profundidad */
+    width: 100%; /* Mapa más grande en pantallas más grandes */
+    height: 60vh;
+  
+  }
+  
+  /* Hacer que el mapa se vea bien en pantallas más grandes */
+  @media (min-width: 768px) {
+    .map-container {
+      width: 80%; /* Mapa más grande en pantallas más grandes */
+      height: 60vh;
+    }
+  }
+  

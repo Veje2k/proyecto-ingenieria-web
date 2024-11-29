@@ -1,12 +1,20 @@
 import React, { useState } from 'react';
 import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonInput, IonButton, IonItem, IonLabel, IonToast } from '@ionic/react';
 import './formularios.css';
+import { useHistory } from 'react-router-dom';
 
-const Login: React.FC = () => {
+
+
+interface LoginProps {
+    onLogin: (userId: string) => void;
+  }
+
+const Login: React.FC<LoginProps> = ({ onLogin }) => {
     const [correo, setCorreo] = useState('');
     const [contrasena, setContrasena] = useState('');
     const [showToast, setShowToast] = useState(false);
     const [toastMessage, setToastMessage] = useState('');
+    const history = useHistory();
 
     // Manejo de cookies de inicio de sesion desde el frontend.
     const handleLogin = async () => {
@@ -29,8 +37,9 @@ const Login: React.FC = () => {
             if (response.ok) {
                 const data = await response.json();
                 setToastMessage('Inicio de sesión exitoso');
-                // Maneja el inicio de sesión exitoso aquí (ej. redirigir, etc.)
-                console.log('Token:', data.token);
+                history.replace('/home');
+                onLogin(data.idUser);
+                localStorage.setItem('userId', data.idUser);
             } else {
                 setToastMessage('Correo electrónico o contraseña incorrectos.');
             }

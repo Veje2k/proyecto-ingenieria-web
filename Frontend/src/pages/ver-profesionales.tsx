@@ -1,20 +1,26 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent, IonCard, IonCardHeader, IonCardTitle, IonCardSubtitle, IonCardContent, IonButton } from '@ionic/react';
 import './ver-profesionales.css';
+import { ProfessionalService } from '../services/profesional-service'; // Importa el servicio
+import { useHistory } from 'react-router';
 
 const VerProfesionales: React.FC = () => {
+    const history = useHistory();
     const [currentIndex, setCurrentIndex] = useState(0);
+    const [veterinarios, setVeterinarios] = useState<any[]>([]);  // Estado para los profesionales
 
-    const veterinarios = [
-        { nombre: "Dr. Juan Pérez", especialidad: "Medicina General", descripcion: "Dr. Pérez tiene más de 10 años de experiencia en medicina general.", img: "dia-del-veterinario_1440x810.jpg" },
-        { nombre: "Dra. Laura Martínez", especialidad: "Cirugía", descripcion: "La Dra. Martínez es experta en cirugía veterinaria y ha realizado procedimientos avanzados.", img: "ruta-a-imagen-veterinario2.jpg" },
-        { nombre: "Dr. Carlos Ruiz", especialidad: "Dermatología", descripcion: "El Dr. Ruiz se especializa en dermatología animal y ofrece tratamientos avanzados.", img: "ruta-a-imagen-veterinario3.jpg" },
-        { nombre: "Dra. Ana Gómez", especialidad: "Comportamiento Animal", descripcion: "La Dra. Gómez ayuda a mejorar la conducta de mascotas.", img: "ruta-a-imagen-veterinario4.jpg" },
-        { nombre: "Dr. Luis Fernández", especialidad: "Cardiología", descripcion: "Dr. Fernández es un cardiólogo veterinario con experiencia.", img: "ruta-a-imagen-veterinario5.jpg" },
-        { nombre: "Dra. Elena Díaz", especialidad: "Odontología", descripcion: "Dra. Díaz ofrece servicios de odontología veterinaria de alta calidad.", img: "ruta-a-imagen-veterinario6.jpg" },
-        { nombre: "Dr. Martín López", especialidad: "Oftalmología", descripcion: "Dr. López se especializa en la salud ocular de las mascotas.", img: "ruta-a-imagen-veterinario7.jpg" },
-        { nombre: "Dra. Rosa Martínez", especialidad: "Oncología", descripcion: "Dra. Martínez es una oncóloga veterinaria altamente capacitada.", img: "ruta-a-imagen-veterinario8.jpg" }
-    ];
+    // Cargar los profesionales desde la API
+    useEffect(() => {
+        const fetchProfessionals = async () => {
+            try {
+                const response = await ProfessionalService.getAllProfessionals();
+                setVeterinarios(response); // Actualizar el estado con los datos obtenidos
+            } catch (error) {
+                console.error("Error fetching professionals:", error);
+            }
+        };
+        fetchProfessionals();
+    }, []);
 
     const profilesPerPage = 4;
     const totalPages = Math.ceil(veterinarios.length / profilesPerPage);
@@ -44,13 +50,13 @@ const VerProfesionales: React.FC = () => {
             >
                 {veterinarios.map((veterinario, index) => (
                 <div className="carousel-card" key={index}>
-                    <img src={veterinario.img} alt={veterinario.nombre} />
+                    <img src='https://media.istockphoto.com/id/1368569467/es/vector/m%C3%A9dico-profesional-con-icono-de-silueta-de-estetoscopio-m%C3%A9dicos-masculinos-especialista-y.jpg?s=612x612&w=0&k=20&c=9oHAla8By-EMw8t5QtutRJrA-knNeUe2WtmCUJAE0bI=' alt={veterinario.nombre} />
                     <IonCardHeader>
                     <IonCardTitle className="carousel-title">{veterinario.nombre}</IonCardTitle>
                     <IonCardSubtitle className="carousel-subtitle">{veterinario.especialidad}</IonCardSubtitle>
                     </IonCardHeader>
-                    <IonCardContent>{veterinario.descripcion}</IonCardContent>
-                    <IonButton color="primary" expand="block" className="carousel-button">
+                    <IonCardContent>Disponibilidad: {veterinario.descripcion || 'No hay descripción disponible.'}</IonCardContent>
+                    <IonButton color="primary" expand="block" className="carousel-button" onClick={()=>history.push('/seleccion-especialidad')}>
                     Reservar cita
                     </IonButton>
                 </div>

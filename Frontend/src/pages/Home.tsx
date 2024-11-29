@@ -1,5 +1,5 @@
-import React from "react";
-import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent, IonButton, IonIcon, IonCard, IonCardHeader, IonCardTitle, IonCardContent, IonGrid, IonRow, IonCol } from "@ionic/react";
+import React, { useState } from "react";
+import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent, IonButton, IonIcon, IonCard, IonCardHeader, IonCardTitle, IonCardContent, IonGrid, IonRow, IonCol, IonToast } from "@ionic/react";
 import { pawOutline, medicalOutline, calendarOutline } from "ionicons/icons";
 import "./Home.css";
 import { useHistory } from "react-router";
@@ -7,6 +7,34 @@ import { useHistory } from "react-router";
 const Home: React.FC = () => {
 
   const history = useHistory();
+
+  const handleNavigateToAdoptionPage = () => {
+    // URL de la página externa
+    const url = "https://www.garrasypatas.cl/";
+    
+    // Abrir la URL en una nueva pestaña
+    window.open(url, '_blank');
+  };
+
+  const [showToast, setShowToast] = useState(false); // Estado para manejar el Toast
+  const [toastMessage, setToastMessage] = useState<string>(''); // Mensaje del Toast
+
+
+  
+  const isAuthenticated = () => {
+    return localStorage.getItem('userId') !== null; 
+  };
+
+  const handleClickOption = (path: string) => {
+    if (!isAuthenticated()) {
+      // Si no está autenticado, redirige al login
+      setToastMessage('Debes iniciar sesión para acceder a esta página.');
+      setShowToast(true);
+    }else{
+      history.push(path)
+    }
+  };
+  
 
 
   return (
@@ -31,7 +59,7 @@ const Home: React.FC = () => {
                 </IonCardHeader>
                 <IonCardContent>
                   Contamos con un equipo experto para atender a tus mascotas en todo momento.
-                  <IonButton expand="full" color="primary" className="action-button" onClick={()=>history.push('/ver-profesionales')}>
+                  <IonButton expand="full" color="primary" className="action-button" onClick={()=>handleClickOption('/ver-profesionales')}>
                     <IonIcon icon={medicalOutline} slot="start" />
                     Más información
                   </IonButton>
@@ -45,7 +73,7 @@ const Home: React.FC = () => {
                 </IonCardHeader>
                 <IonCardContent>
                   Agenda fácilmente una cita desde nuestra app y evita largas esperas.
-                  <IonButton expand="full" color="secondary" className="action-button" onClick={()=>history.push('/seleccion-especialidad')}>
+                  <IonButton expand="full" color="secondary" className="action-button" onClick={()=>handleClickOption('/seleccion-especialidad')}>
                     <IonIcon icon={calendarOutline} slot="start" />
                     Reservar ahora
                   </IonButton>
@@ -59,7 +87,7 @@ const Home: React.FC = () => {
                 </IonCardHeader>
                 <IonCardContent>
                   Dale un hogar a un amigo peludo que lo necesita. ¡Conoce más aquí!
-                  <IonButton expand="full" color="success" className="action-button">
+                  <IonButton expand="full" color="success" className="action-button" onClick={handleNavigateToAdoptionPage}>
                     <IonIcon icon={pawOutline} slot="start" />
                     Ver adopciones
                   </IonButton>
@@ -69,6 +97,13 @@ const Home: React.FC = () => {
           </IonRow>
         </IonGrid>
       </IonContent>
+      <IonToast
+        isOpen={showToast}
+        message={toastMessage}
+        duration={2000}
+        color="danger"
+        onDidDismiss={() => setShowToast(false)}
+      />
     </IonPage>
   );
 };

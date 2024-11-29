@@ -39,9 +39,22 @@ export const loginUser = async (req, res) => {
 
         // Enviar la cookie
         res.cookie('token', token, { httpOnly: true, secure: process.env.NODE_ENV === 'production' });
-        res.json({ message: "Inicio de sesión exitoso" });
+        res.json({ message: "Inicio de sesión exitoso", idUser:user.id_usuario, token });
         
     } catch (error) {
         res.status(500).json({ message: "Error al iniciar sesión", error });
     }
+};
+
+export const currentUserInfo = async (req, res) => {
+    if (!req.user) {
+        res.status(400).json({ message: "Usuario no logeado" });
+    } else {
+        res.status(200).json({ message: "Inicio de sesión exitoso", user: req.user });
+    }
+};
+
+export const logoutUser = (req, res) => {
+    res.clearCookie('token');
+    res.json({ message: "Cierre de sesión exitoso" });
 };

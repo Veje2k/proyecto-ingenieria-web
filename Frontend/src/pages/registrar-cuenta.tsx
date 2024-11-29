@@ -109,6 +109,9 @@ const RegistrarCuenta: React.FC = () => {
                 </IonToolbar>
             </IonHeader>
             <IonContent className="ion-padding form-container">
+
+            <h1 style={{ textAlign: 'center' }}>Registrar usuario</h1>
+
                 <IonItem className="form-item">
                     <IonLabel position="floating">Nombre</IonLabel>
                     <IonInput value={name} onIonChange={e => setName(e.detail.value!)} />

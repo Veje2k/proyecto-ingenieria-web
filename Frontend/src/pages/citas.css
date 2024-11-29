@@ -1,3 +1,6 @@
 .custom-modal {
-    height: 400px; /* Asegúrate de que sea responsivo */
+    --height: 200px; /* Asegúrate de que sea responsivo */
+    background: white !important;
+    color: red;
+    --background: none;
   }

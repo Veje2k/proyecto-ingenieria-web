@@ -1,16 +1,70 @@
-// Navbar.tsx
-import React, { useState } from 'react';
-import { IonHeader, IonToolbar, IonButtons, IonButton, IonTitle, IonIcon, IonPopover, IonList, IonItem, IonMenu, IonContent, IonMenuButton, IonMenuToggle } from '@ionic/react';
-import { pawOutline, chevronDownOutline } from 'ionicons/icons';
+import React, { useState, useEffect } from 'react';
+import { IonHeader, IonToolbar, IonButtons, IonButton, IonTitle, IonIcon, IonPopover, IonList, IonItem, IonMenu, IonContent, IonMenuButton, IonMenuToggle, IonToast } from '@ionic/react';
+import { pawOutline, chevronDownOutline, logInOutline } from 'ionicons/icons';
 import { useHistory } from 'react-router-dom';
 
-const Navbar: React.FC = () => {
+
+interface NavbarProps {
+    isAuthenticated: boolean;
+    onLogout: () => void;
+  }
+
+const Navbar: React.FC<NavbarProps> = ({ isAuthenticated, onLogout }) => {
+    // Corregir -> Buscar como se hace con ionic
     const history = useHistory();
+    const [isUser, setIsUser] = useState(false);
     const [showPopover, setShowPopover] = useState(false);
+    const [showToast, setShowToast] = useState(false); // Estado para manejar el Toast
+    const [toastMessage, setToastMessage] = useState<string>(''); // Mensaje del Toast
+  
+
+    // Corregir -> Buscar como se hace con ionic
     const handleMenuClick = (path: string) => {
-        history.push(path);
-        setShowPopover(false); // Cierra el popover de servicios
+        if (!isAuthenticated && path !== '/home' && path !== '/mapa' && path !== '/nosotros' && path !== '/registrar-cuenta') {
+            // Si no está autenticado, redirige al login
+            history.push('/inicio-sesion'); // Para React Router v5
+            setShowPopover(false)        
+            setToastMessage('Debes iniciar sesión para acceder a esta página.');
+            setShowToast(true);
+        }else{
+            history.push(path);
+            setShowPopover(false);
+        } // Cierra el popover de servicios
     };
+
+
+    
+
+    const handleLogout = async () => {
+        try {
+            const response = await fetch('http://localhost:5000/usuarios/logout', {
+                method: 'POST',
+                credentials: 'include',
+            });
+    
+            if (response.ok) {
+                onLogout();
+                history.replace('/home');
+            } else {
+                console.error('Error al cerrar sesión');
+            }
+        } catch (error) {
+            console.error('Error al conectar con el servidor', error);
+        }
+    };
+
+    useEffect(() => {
+        // fetch(`http://localhost:5000/usuarios/me`, {
+        //   method: 'GET',
+        //   credentials: 'include' // Incluir cookies en la solicitud
+        // }).then((res1) => {
+        //   res1.json().then(us => {
+        //     if (us.user)
+        //         setIsUser(true);
+
+        //   })
+        // })
+      }, []);
 
     return (
         <>
@@ -19,15 +73,22 @@ const Navbar: React.FC = () => {
                     <IonButtons slot="start">
                         <IonMenuButton />
                     </IonButtons>
-                    <IonTitle>PetMedic</IonTitle>
+                    <IonTitle style={{ padding: 0 }}>PetMedic</IonTitle>
                     <IonButtons slot="end">
-                        <IonButton>
-                            <IonIcon icon={pawOutline} size="large" />
+                        {isAuthenticated ? (
+                            <IonButton onClick={handleLogout}>
+                                <IonIcon icon={pawOutline} size="large" />
+                                Cerrar Sesión
+                            </IonButton>
+                        ) : (
+                        <IonButton routerLink="/inicio-sesion" style={{ fontSize: '12px' }}>
+                            <IonIcon icon={logInOutline} size='small' />
+                            Iniciar Sesión
                         </IonButton>
+                        )}                        
                     </IonButtons>
                 </IonToolbar>
             </IonHeader>
-
             <IonMenu contentId="main-content">
                 <IonHeader>
                 <IonToolbar>
@@ -36,7 +97,7 @@ const Navbar: React.FC = () => {
                 </IonHeader>
                 <IonContent>
                     <IonList>
-                        <IonMenuToggle>
+                    <IonMenuToggle>
 
                             
                             <IonItem onClick={() => handleMenuClick('/home')}>
@@ -50,6 +111,9 @@ const Navbar: React.FC = () => {
                             </IonItem>
                             <IonItem button onClick={() => setShowPopover(true)}>
                                 Servicios <IonIcon icon={chevronDownOutline} />
+                            </IonItem>
+                            <IonItem button onClick={() => handleMenuClick('/registrar-cuenta')}>
+                                Registrar Usuario 
                             </IonItem>
                             <IonPopover
                                 isOpen={showPopover}
@@ -73,7 +137,6 @@ const Navbar: React.FC = () => {
                                 </IonList>
                             </IonPopover>
                         </IonMenuToggle>
-
                     </IonList>
                 </IonContent>
             </IonMenu>
@@ -81,6 +144,14 @@ const Navbar: React.FC = () => {
             <IonContent id="main-content">
                 {/* Contenido principal de la aplicación aquí */}
             </IonContent>
+
+            <IonToast
+        isOpen={showToast}
+        message={toastMessage}
+        duration={2000}
+        color="danger"
+        onDidDismiss={() => setShowToast(false)}
+      />
         </>
     );
 };

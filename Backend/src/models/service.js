@@ -15,5 +15,11 @@ const Service = sequelize.define("Servicio", {
   id_usuario: { type: DataTypes.INTEGER, references: { model: Usuario, key: "id_usuario" } },
 });
 
+Service.belongsTo(ServiceType, { foreignKey: 'id_tipo_servicio' });
+Service.belongsTo(Professional, { foreignKey: 'id_veterinario' });
+
+ServiceType.hasMany(Service, { foreignKey: 'id_tipo_servicio' });
+Professional.hasMany(Service, { foreignKey: 'id_veterinario' });
+
 
 export default Service;

@@ -7,6 +7,7 @@ import petRoutes from "./routes/petRoutes.js";
 import serviceRoutes from "./routes/serviceRoutes.js";
 import professionalRoutes from "./routes/professionalRoutes.js"
 import { verifyToken } from "./middlewares/authMiddleware.js"; // Importar el middleware de autenticación
+import cookieParser from "cookie-parser";
 
 dotenv.config();
 
@@ -18,6 +19,7 @@ app.use(cors({
     origin: 'http://localhost:8100',
     credentials: true
 }));
+app.use(cookieParser());
 app.use(express.json());
 
 // Rutas públicas
