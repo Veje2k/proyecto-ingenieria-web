@@ -1,0 +1,60 @@
+/* Fondo suave para el contenido */
+.vacunas-content {
+    background-color: #f4f4f9; /* Fondo suave gris */
+    padding: 20px;
+}
+
+/* Contenedor de la información */
+.vacunas-info {
+    background-color: #ffffff; /* Fondo blanco para resaltar el contenido */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+    margin: 10px 0;
+}
+
+/* Títulos */
+.vacunas-info h3 {
+    font-size: 1.4em;
+    margin-bottom: 15px;
+    color: #2a4d60; /* Un color azul suave para los títulos */
+}
+
+/* Lista de vacunas */
+.vacunas-list ul {
+    list-style: none;
+    padding: 0;
+}
+
+.vacunas-list li {
+    display: flex;
+    justify-content: space-between;
+    background-color: #f9f9f9;
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.vacunas-list li strong {
+    font-weight: bold;
+    font-size: 1.1em;
+}
+
+.vacunas-list li span {
+    color: #888;
+}
+
+/* Estilo del botón */
+.ion-button {
+    margin-top: 20px;
+    font-weight: bold;
+    font-size: 1.1em;
+    padding: 10px;
+    border-radius: 50px;
+}
+
+/* Efecto hover para el botón */
+.ion-button:hover {
+    background-color: #23678e;
+}

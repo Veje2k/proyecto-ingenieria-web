@@ -1,3 +1,4 @@
+/* Estilo para la vista en pantallas grandes */
 .carousel-container {
     display: flex;
     overflow: hidden;
@@ -6,56 +7,64 @@
     margin: auto;
     position: relative; /* Para posicionar las flechas */
 }
-  
+
+.carousel-card img {
+    width: 100%;
+    height: 150px;
+    object-fit: contain; /* O usa cover si prefieres que cubra todo el contenedor */
+    border-radius: 10px; /* Borde redondeado para la imagen */
+}
+
 .carousel-wrapper {
     display: flex;
     transition: transform 0.5s ease;
 }
-  
+
 .carousel-card {
-    flex: 1 0 21%; /* Ajuste para que se muestren cuatro tarjetas con margen */
+    flex: 1 0 21%; /* Cuatro tarjetas por fila en pantallas grandes */
     box-sizing: border-box;
-    margin: 10px; /* Espacio entre cada tarjeta */
+    margin: 10px;
     padding: 15px;
     background-color: #C97E43;
     border-radius: 15px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra para dar un efecto de profundidad */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     color: #ffffff;
     display: flex;
     flex-direction: column;
     align-items: center;
-    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transición para hover */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
-  
+
+/* Efecto al pasar el mouse */
 .carousel-card:hover {
-    transform: scale(1.05); /* Efecto de agrandamiento al pasar el mouse */
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Sombra más intensa en hover */
+    transform: scale(1.05);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
 }
-  
+
 .carousel-card img {
     width: 100%;
     height: 150px;
     object-fit: cover;
-    border-radius: 10px; /* Borde redondeado para la imagen */
+    border-radius: 10px;
 }
-  
+
 .carousel-title, .carousel-subtitle {
     text-align: center;
     margin: 10px 0;
 }
-  
+
 .carousel-button {
     margin-top: 10px;
     width: 100%;
     font-weight: bold;
 }
-  
-  /* Estilos para las flechas */
+
+/* Estilos para las flechas */
 .arrow-button {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background-color: rgba(0, 0, 0, 0.5); /* Fondo semitransparente */
+    background-color: rgba(0, 0, 0, 0.5);
     border: none;
     border-radius: 50%;
     color: #ffffff;
@@ -66,15 +75,36 @@
     transition: background-color 0.3s;
     z-index: 1;
 }
-  
-  .arrow-button:hover {
+
+.arrow-button:hover {
     background-color: rgba(0, 0, 0, 0.7);
 }
-  
+
 .arrow-left {
     left: 10px;
 }
-  
+
 .arrow-right {
     right: 10px;
-}  
+}
+
+/* Estilo para pantallas pequeñas (teléfonos) */
+@media (max-width: 600px) {
+    .carousel-container {
+        flex-direction: column; /* Cambia la dirección del contenedor a columna */
+    }
+
+    .carousel-wrapper {
+        display: block; /* Muestra las tarjetas de forma vertical */
+    }
+
+    .carousel-card {
+        flex: none;
+        width: 90%; /* Ajusta el ancho para que ocupe más espacio */
+        margin: 10px auto; /* Centra las tarjetas y les da margen */
+    }
+
+    .arrow-button {
+        display: none; /* Oculta las flechas de navegación en pantallas pequeñas */
+    }
+}

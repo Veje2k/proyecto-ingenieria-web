@@ -1,0 +1,61 @@
+/* Fondo suave para el contenido */
+.peluqueria-content {
+    background-color: #f9f9f9; /* Fondo gris claro */
+    padding: 20px;
+}
+
+/* Contenedor de la información */
+.peluqueria-info {
+    background-color: #ffffff; /* Fondo blanco para resaltar el contenido */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+    margin: 10px 0;
+}
+
+/* Títulos */
+.peluqueria-info h3 {
+    font-size: 1.4em;
+    margin-bottom: 15px;
+    color: #45a29e; /* Un verde suave que evoca frescura y bienestar */
+}
+
+/* Lista de servicios */
+.peluqueria-list ul {
+    list-style: none;
+    padding: 0;
+}
+
+.peluqueria-list li {
+    display: flex;
+    justify-content: space-between;
+    background-color: #f1f1f1;
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.peluqueria-list li strong {
+    font-weight: bold;
+    font-size: 1.1em;
+    color: #2c3e50; /* Un color oscuro para los títulos de los servicios */
+}
+
+.peluqueria-list li span {
+    color: #888; /* Color gris para las descripciones */
+}
+
+/* Estilo del botón */
+.ion-button {
+    margin-top: 20px;
+    font-weight: bold;
+    font-size: 1.1em;
+    padding: 10px;
+    border-radius: 50px;
+}
+
+/* Efecto hover para el botón */
+.ion-button:hover {
+    background-color: #3e8e41; /* Un verde más oscuro cuando se pasa el mouse */
+}

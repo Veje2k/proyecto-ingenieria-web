@@ -5,6 +5,10 @@
     padding: 20px;
     text-align: center;
 }
+
+footer {
+    margin-top: auto;
+  }
   
 .footer-content h2 {
     font-size: 1.5rem;

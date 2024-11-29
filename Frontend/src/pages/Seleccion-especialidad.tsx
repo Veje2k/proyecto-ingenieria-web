@@ -53,7 +53,7 @@ const SeleccionEspecialidad: React.FC = () => {
             {especialidades.map((especialidad) => (
               <div className="col" key={especialidad.id_tipo_servicio}>
                 <IonCard>
-                  <IonImg src="../../public/img/peluqueria.webp"></IonImg>
+                  <IonImg src={`../../public/img/tipo_servicio_${especialidad.id_tipo_servicio}.jpg`} ></IonImg>
                   <IonCardHeader>
                     <IonCardTitle>{especialidad.nombre}</IonCardTitle>
                   </IonCardHeader>

@@ -43,8 +43,9 @@ const Navbar: React.FC<NavbarProps> = ({ isAuthenticated, onLogout }) => {
             });
     
             if (response.ok) {
-                onLogout();
                 history.replace('/home');
+
+                onLogout();
             } else {
                 console.error('Error al cerrar sesión');
             }

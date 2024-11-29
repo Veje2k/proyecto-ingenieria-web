@@ -99,8 +99,9 @@ const App: React.FC = () => {
 
           <Redirect from="/" to="/home" exact />
         </IonRouterOutlet>
+        {/* <Footer/ > */}
+
       </IonReactRouter>
-      <Footer/ >
     </IonApp>
   ); 
 };
